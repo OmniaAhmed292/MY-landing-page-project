@@ -13,18 +13,15 @@
  *
 */
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
 
 /**
  * Define Global Variables
 */
 //Put navbar__list into a variable;
-const navBar = document.querySelector('.navbar__menu');
-const navigation = document.querySelector('#navbar__list');
 const sections = document.querySelectorAll('main section');
+const navBar = document.getElementById('.navbar__menu');
+const navigation = document.querySelector('#navbar__list');
+
 //End global variables
 
 
@@ -32,6 +29,17 @@ const sections = document.querySelectorAll('main section');
 /*
     Functtions
 */
+//Helper function
+function ButtonFunc(event){
+//Prevent the default function to go to link
+event.preventDefault();
+//Scrolling conditions
+window.scrollTo({
+  behavior:"smooth",
+  top: section.offsetTop
+
+});
+}
 
 // build the navigation bar with buttons and their events
 function NavBuild(){
@@ -43,15 +51,7 @@ function NavBuild(){
         navigation.appendChild(navButton);
 
         //When The button is clicked
-        navButton.addEventListener('click', function(event){
-        //Prevent the default function to go to link
-        event.preventDefault();
-        //Scrolling conditions
-        window.scrollTo({
-            top: section.offsetTop,
-            behavior:"smooth"
-        });
-    }); //End of event EventListener
+        navButton.addEventListener('click', ButtonFunc(event)); //End of event EventListener
 
   }); //End of for loop
 
@@ -62,10 +62,10 @@ function NavBuild(){
 
 
 
-// Add class 'active' to section when near top of viewport
+// Add class 'active' to section when in view
 function ActivateSection(){
   //Select All anchors we built in nav using "Sections" class
-  let NavSections = document.querySelectorAll(".Sections");
+  let NavSections = document.getElementsByClassName(".Sections");
   sections.forEach((Section, i) => {
     //get boundaries for each section
     const Boundary= Section.getBoundingClientRect();
@@ -87,7 +87,8 @@ function ActivateSection(){
 
 
 }//End of Activate section function
-//Build the navigation bar
+
+//Build navigation bar
 NavBuild();
 
 //While scrolling we want to Activate each section we are at;
@@ -95,13 +96,3 @@ window.addEventListener('scroll',(event)=>{
     ActivateSection();
     console.log("scrolling");
 })
-
-
-
-
-// Build menu
-
-// Scroll to section on link click
-
-
-// Set sections as active
