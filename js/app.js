@@ -29,17 +29,6 @@ const navigation = document.querySelector('#navbar__list');
 /*
     Functtions
 */
-//Helper function
-function ButtonFunc(event){
-//Prevent the default function to go to link
-event.preventDefault();
-//Scrolling conditions
-window.scrollTo({
-  behavior:"smooth",
-  top: section.offsetTop
-
-});
-}
 
 // build the navigation bar with buttons and their events
 function NavBuild(){
@@ -51,7 +40,16 @@ function NavBuild(){
         navigation.appendChild(navButton);
 
         //When The button is clicked
-        navButton.addEventListener('click', ButtonFunc(event)); //End of event EventListener
+        navButton.addEventListener('click', function(event){
+        //Prevent the default function to go to link
+        event.preventDefault();
+        //Scrolling conditions
+        window.scrollTo({
+          behavior:"smooth",
+          top: section.offsetTop
+
+        });
+    }); //End of event EventListener
 
   }); //End of for loop
 
