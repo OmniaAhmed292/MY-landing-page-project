@@ -18,9 +18,9 @@
  * Define Global Variables
 */
 //Put navbar__list into a variable;
-const sections = document.querySelectorAll('main section');
-const navBar = document.getElementById('.navbar__menu');
-const navigation = document.querySelector('#navbar__list');
+let sections = document.querySelectorAll('main section');
+let navBar = document.getElementById('.navbar__menu');
+let navigation = document.querySelector('#navbar__list');
 
 //End global variables
 
@@ -31,7 +31,7 @@ const navigation = document.querySelector('#navbar__list');
 */
 
 // build the navigation bar with buttons and their events
-function NavBuild(){
+//function NavBuild(){
     sections.forEach(section => {
         const navButton = document.createElement('li');
         //Insert the html text to  the li and the function of the button
@@ -55,7 +55,7 @@ function NavBuild(){
 
     //Put the finished nav to the nav variable
     navBar.appendChild(navigation);
-} //End of NavBuild function
+//} //End of NavBuild function
 
 
 
@@ -87,7 +87,7 @@ function ActivateSection(){
 }//End of Activate section function
 
 //Build navigation bar
-NavBuild();
+//NavBuild();
 
 //While scrolling we want to Activate each section we are at;
 window.addEventListener('scroll',(event)=>{
